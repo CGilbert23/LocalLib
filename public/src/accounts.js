@@ -14,16 +14,17 @@ return result;
 
 /* Two arrays so double loop, basic would be to use a normal nested*/
 function getTotalNumberOfBorrows(account, books) {
-  let counter =0;
-    for (let book of books){
-        for (let item of book.borrows){
-            if (account.id === item.id){
-                counter+=1
-            }
-        }
+ let counter = books.reduce((acc, book) => {
+  for (let item of book.borrows){
+    if(account.id === item.id){
+      acc+=1
     }
-    return counter
   }
+return acc
+},0)
+
+return counter
+}
 
 
 
